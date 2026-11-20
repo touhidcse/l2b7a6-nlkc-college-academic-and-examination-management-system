@@ -1,0 +1,27 @@
+// ==================================================
+// TEACHER
+// ==================================================
+
+model Teacher {
+  id Int @id @default(autoincrement())
+
+  userId Int @unique
+
+  employeeId String @unique
+
+  designation String
+  department  String
+
+  user User @relation(   fields: [userId],  references: [id] )
+
+  assignments TeacherAssignment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  deletedAt DateTime?
+
+  @@index([employeeId])
+  @@index([deletedAt])
+  @@map("teachers")
+}

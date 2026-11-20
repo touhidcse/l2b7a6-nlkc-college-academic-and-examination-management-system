@@ -1,0 +1,45 @@
+// ==================================================
+// STUDENT SUBJECT
+// ==================================================
+//
+// Registration-এর সময় selected subjects এখানে থাকবে.
+//
+// Compulsory -> system automatically inserts.
+// Elective/Optional -> student selection অনুযায়ী inserts.
+//
+// ==================================================
+
+model StudentSubject {
+  id Int @id @default(autoincrement())
+
+  studentId Int
+
+  studentAcademicRecordId Int
+
+  curriculumSubjectId Int
+
+  subject SubjectName
+
+  paperType PaperType
+
+  category SubjectCategory
+
+  student Student @relation(  fields: [studentId],  references: [id] )
+
+  academicRecord StudentAcademicRecord @relation( fields: [studentAcademicRecordId],references: [id])
+
+  curriculumSubject CurriculumSubject @relation(  fields: [curriculumSubjectId], references: [id] )
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@unique([  studentAcademicRecordId,  subject,  paperType])
+
+  @@index([studentId])
+  @@index([studentAcademicRecordId])
+  @@index([curriculumSubjectId])
+  @@index([subject])
+  @@index([category])
+
+  @@map("student_subjects")
+}

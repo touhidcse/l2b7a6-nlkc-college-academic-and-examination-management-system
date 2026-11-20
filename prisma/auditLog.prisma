@@ -1,0 +1,34 @@
+// ==================================================
+// AUDIT LOG
+// ==================================================
+
+model AuditLog {
+  id Int @id @default(autoincrement())
+
+  userId Int?
+
+  action String
+
+  entity String
+
+  entityId String?
+
+  oldData Json?
+
+  newData Json?
+
+  ipAddress String?
+
+  userAgent String?
+
+  user User? @relation( fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([entity, entityId])
+  @@index([action])
+  @@index([createdAt])
+
+  @@map("audit_logs")
+}

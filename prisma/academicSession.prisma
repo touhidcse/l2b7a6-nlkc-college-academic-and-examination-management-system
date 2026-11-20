@@ -1,0 +1,26 @@
+// ==================================================
+// ACADEMIC SESSION
+// ==================================================
+
+model AcademicSession {
+  id Int @id @default(autoincrement())
+
+  name String @unique
+
+  startDate DateTime
+  endDate   DateTime
+
+  isActive Boolean @default(false)
+
+  academicRecords StudentAcademicRecord[]
+
+  exams Exam[]
+
+  assignments TeacherAssignment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@index([isActive])
+  @@map("academic_sessions")
+}

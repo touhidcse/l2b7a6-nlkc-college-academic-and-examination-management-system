@@ -1,0 +1,23 @@
+// ==================================================
+// ACADEMIC PROGRAM
+// ==================================================
+
+model AcademicProgram {
+  id Int @id @default(autoincrement())
+
+  name String
+  code String @unique
+
+  type ProgramType
+
+  isActive Boolean @default(true)
+
+  levels AcademicLevel[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@index([type])
+  @@index([isActive])
+  @@map("academic_programs")
+}

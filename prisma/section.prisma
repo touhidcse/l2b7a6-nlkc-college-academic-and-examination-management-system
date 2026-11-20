@@ -1,0 +1,36 @@
+// ==================================================
+// SECTION
+// ==================================================
+
+model Section {
+  id Int @id @default(autoincrement())
+
+  academicLevelId Int
+
+  academicGroupId Int?
+
+  name String
+
+  capacity Int?
+
+  isActive Boolean @default(true)
+
+  academicLevel AcademicLevel @relation(  fields: [academicLevelId], references: [id] )
+
+  academicGroup AcademicGroup? @relation(  fields: [academicGroupId],  references: [id])
+
+  academicRecords StudentAcademicRecord[]
+
+  teacherAssignments TeacherAssignment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@unique([ academicLevelId, academicGroupId, name ])
+
+  @@index([academicLevelId])
+  @@index([academicGroupId])
+  @@index([isActive])
+
+  @@map("sections")
+}

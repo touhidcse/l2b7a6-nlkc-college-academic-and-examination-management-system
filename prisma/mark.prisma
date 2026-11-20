@@ -1,0 +1,44 @@
+// ==================================================
+// MARK
+// ==================================================
+
+model Mark {
+  id Int @id @default(autoincrement())
+
+  examSubjectId Int
+
+  studentId Int
+
+  mcqMark Int?
+
+  creativeMark Int?
+
+  practicalMark Int?
+
+  obtainedMark Int
+
+  isPassed Boolean
+
+  grade Grade?
+
+  gradePoint Float?
+
+  enteredBy Int?
+
+  examSubject ExamSubject @relation( fields: [examSubjectId], references: [id])
+
+  student Student @relation( fields: [studentId], references: [id] )
+
+  enteredByUser User? @relation("MarkEnteredBy", fields: [enteredBy], references: [id] )
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@unique([ examSubjectId, studentId ])
+
+  @@index([studentId])
+  @@index([examSubjectId])
+  @@index([isPassed])
+
+  @@map("marks")
+}

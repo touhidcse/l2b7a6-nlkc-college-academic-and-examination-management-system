@@ -1,0 +1,31 @@
+// ==================================================
+// PAYMENT TRANSACTION
+// ==================================================
+
+model PaymentTransaction {
+  id Int @id @default(autoincrement())
+
+  paymentId Int
+
+  gateway PaymentGateway
+
+  gatewayTransactionId String
+
+  // BDT integer amount
+  amount Int
+
+  status PaymentStatus
+
+  responseData Json?
+
+  payment Payment @relation( fields: [paymentId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@index([paymentId])
+  @@index([gatewayTransactionId])
+  @@index([status])
+
+  @@map("payment_transactions")
+}

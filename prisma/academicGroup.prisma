@@ -1,0 +1,32 @@
+// ==================================================
+// ACADEMIC GROUP
+// ==================================================
+
+model AcademicGroup {
+  id Int @id @default(autoincrement())
+
+  academicLevelId Int
+
+  name String
+
+  code GroupType
+
+  academicLevel AcademicLevel @relation( fields: [academicLevelId], references: [id])
+
+  sections Section[]
+
+  curriculumSubjects CurriculumSubject[]
+
+  academicRecords StudentAcademicRecord[]
+
+  exams Exam[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@unique([academicLevelId, code])
+
+  @@index([academicLevelId])
+
+  @@map("academic_groups")
+}

@@ -1,0 +1,38 @@
+// ==================================================
+// TEACHER ASSIGNMENT
+// ==================================================
+
+model TeacherAssignment {
+  id Int @id @default(autoincrement())
+
+  teacherId Int
+
+  sectionId Int
+
+  curriculumSubjectId Int
+
+  academicSessionId Int
+
+  isActive Boolean @default(true)
+
+  teacher Teacher @relation( fields: [teacherId],  references: [id])
+
+  section Section @relation(  fields: [sectionId],  references: [id])
+
+  curriculumSubject CurriculumSubject @relation(  fields: [curriculumSubjectId],  references: [id])
+
+  academicSession AcademicSession @relation(  fields: [academicSessionId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@unique([ teacherId,  sectionId,  curriculumSubjectId, academicSessionId])
+
+  @@index([teacherId])
+  @@index([sectionId])
+  @@index([curriculumSubjectId])
+  @@index([academicSessionId])
+  @@index([isActive])
+
+  @@map("teacher_assignments")
+}

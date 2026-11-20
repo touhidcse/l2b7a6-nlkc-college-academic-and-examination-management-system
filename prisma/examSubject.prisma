@@ -1,0 +1,44 @@
+// ==================================================
+// EXAM SUBJECT
+// ==================================================
+
+model ExamSubject {
+  id Int @id @default(autoincrement())
+
+  examId Int
+
+  curriculumSubjectId Int
+
+  subject SubjectName
+
+  paperType PaperType
+
+  fullMarks Int
+
+  mcqFullMarks Int?
+  creativeFullMarks Int?
+  practicalFullMarks Int?
+
+  mcqPassMarks Int?
+  creativePassMarks Int?
+  practicalPassMarks Int?
+
+  passMarks Int?
+
+  exam Exam @relation(  fields: [examId],  references: [id])
+
+  curriculumSubject CurriculumSubject @relation( fields: [curriculumSubjectId],  references: [id] )
+
+  marks Mark[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@unique([ examId,  curriculumSubjectId ])
+
+  @@index([examId])
+  @@index([curriculumSubjectId])
+  @@index([subject])
+
+  @@map("exam_subjects")
+}

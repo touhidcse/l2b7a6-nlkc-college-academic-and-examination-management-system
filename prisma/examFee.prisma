@@ -1,0 +1,37 @@
+// ==================================================
+// EXAM FEE
+// ==================================================
+
+model ExamFee {
+  id Int @id @default(autoincrement())
+
+  examId Int
+
+  studentId Int
+
+  // BDT integer amount
+  amount Int
+
+  dueDate DateTime?
+
+  status ExamFeeStatus @default(UNPAID)
+
+  paidAt DateTime?
+
+  exam Exam @relation( fields: [examId],  references: [id])
+
+  student Student @relation( fields: [studentId], references: [id])
+
+  payments Payment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@unique([ examId, studentId ])
+
+  @@index([examId])
+  @@index([studentId])
+  @@index([status])
+
+  @@map("exam_fees")
+}

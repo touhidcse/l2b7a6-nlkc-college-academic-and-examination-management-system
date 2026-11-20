@@ -1,0 +1,66 @@
+// ==================================================
+// CURRICULUM SUBJECT
+// ==================================================
+//
+// এখানে Subject আর SubjectPaper model নেই.
+// Subject সরাসরি SubjectName enum.
+//
+// Example:
+//
+// HSC Science:
+//
+// BANGLA_1ST       -> COMPULSORY
+// BANGLA_2ND       -> COMPULSORY
+// ENGLISH_1ST      -> COMPULSORY
+// ENGLISH_2ND      -> COMPULSORY
+// ICT              -> COMPULSORY
+//
+// PHYSICS          -> ELECTIVE
+// CHEMISTRY        -> ELECTIVE
+// MATHEMATICS      -> ELECTIVE
+// BIOLOGY          -> ELECTIVE
+//
+// MATHEMATICS/BIOLOGY -> OPTIONAL
+//
+// Actual selection logic service layer-এ হবে.
+// ==================================================
+
+model CurriculumSubject {
+  id Int @id @default(autoincrement())
+
+  academicLevelId Int
+
+  academicGroupId Int?
+
+  subject SubjectName
+
+  paperType PaperType @default(SINGLE)
+
+  category SubjectCategory
+
+  selectionGroup String?
+
+  isRequired Boolean @default(false)
+
+  academicLevel AcademicLevel @relation( fields: [academicLevelId],  references: [id] )
+
+  academicGroup AcademicGroup? @relation( fields: [academicGroupId], references: [id] )
+
+  studentSubjects StudentSubject[]
+
+  teacherAssignments TeacherAssignment[]
+
+  examSubjects ExamSubject[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@unique([  academicLevelId,  academicGroupId,  subject,  paperType ])
+
+  @@index([academicLevelId])
+  @@index([academicGroupId])
+  @@index([subject])
+  @@index([category])
+
+  @@map("curriculum_subjects")
+}

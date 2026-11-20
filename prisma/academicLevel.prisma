@@ -1,0 +1,34 @@
+// ==================================================
+// ACADEMIC LEVEL
+// ==================================================
+
+model AcademicLevel {
+  id Int @id @default(autoincrement())
+
+  programId Int
+
+  name String
+
+  yearNumber Int
+
+  program AcademicProgram @relation( fields: [programId],  references: [id])
+
+  groups AcademicGroup[]
+
+  sections Section[]
+
+  curriculumSubjects CurriculumSubject[]
+
+  academicRecords StudentAcademicRecord[]
+
+  exams Exam[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@unique([programId, yearNumber])
+
+  @@index([programId])
+
+  @@map("academic_levels")
+}

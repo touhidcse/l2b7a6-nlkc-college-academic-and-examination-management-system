@@ -1,0 +1,41 @@
+// ==================================================
+// STUDENT
+// ==================================================
+
+model Student {
+  id Int @id @default(autoincrement())
+
+  userId Int @unique
+
+  studentId String @unique
+
+  dateOfBirth DateTime?
+  gender      String?
+
+  guardianName  String?
+  guardianPhone String?
+  address       String?
+
+  user User @relation(  fields: [userId], references: [id])
+
+  academicRecords StudentAcademicRecord[]
+
+  subjects StudentSubject[]
+
+  marks Mark[]
+
+  results Result[]
+
+  examFees ExamFee[]
+
+  payments Payment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  deletedAt DateTime?
+
+  @@index([studentId])
+  @@index([deletedAt])
+  @@map("students")
+}

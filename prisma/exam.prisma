@@ -1,0 +1,46 @@
+// ==================================================
+// EXAM
+// ==================================================
+
+model Exam {
+  id Int @id @default(autoincrement())
+
+  name String
+
+  examType ExamType
+
+  academicSessionId Int
+
+  academicLevelId Int
+
+  academicGroupId Int?
+
+  startDate DateTime?
+
+  endDate DateTime?
+
+  resultPublished Boolean @default(false)
+
+  academicSession AcademicSession @relation(  fields: [academicSessionId], references: [id] )
+
+  academicLevel AcademicLevel @relation( fields: [academicLevelId],  references: [id] )
+
+  academicGroup AcademicGroup? @relation( fields: [academicGroupId],  references: [id])
+
+  examSubjects ExamSubject[]
+
+  results Result[]
+
+  examFees ExamFee[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@index([academicSessionId])
+  @@index([academicLevelId])
+  @@index([academicGroupId])
+  @@index([examType])
+  @@index([resultPublished])
+
+  @@map("exams")
+}

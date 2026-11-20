@@ -1,0 +1,43 @@
+// ==================================================
+// PAYMENT
+// ==================================================
+
+model Payment {
+  id Int @id @default(autoincrement())
+
+  examFeeId Int
+
+  studentId Int
+
+  // BDT integer amount
+  amount Int
+
+  gateway PaymentGateway
+
+  paymentMethod PaymentMethod
+
+  status PaymentStatus @default(PENDING)
+
+  gatewayTransactionId String?
+
+  initiatedAt DateTime @default(now())
+
+  completedAt DateTime?
+
+  examFee ExamFee @relation( fields: [examFeeId],  references: [id])
+
+  student Student @relation(fields: [studentId], references: [id])
+
+  transactions PaymentTransaction[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@index([examFeeId])
+  @@index([studentId])
+  @@index([status])
+  @@index([gateway])
+  @@index([gatewayTransactionId])
+
+  @@map("payments")
+}

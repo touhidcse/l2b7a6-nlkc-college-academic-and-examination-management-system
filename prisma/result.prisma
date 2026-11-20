@@ -1,0 +1,36 @@
+// ==================================================
+// RESULT
+// ==================================================
+
+model Result {
+  id Int @id @default(autoincrement())
+
+  examId Int
+
+  studentId Int
+
+  totalMarks Int
+
+  obtainedMarks Int
+
+  gpa Float?
+
+  status ExamResultStatus @default(DRAFT)
+
+  publishedAt DateTime?
+
+  exam Exam @relation(  fields: [examId],  references: [id])
+
+  student Student @relation(fields: [studentId],  references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@unique([  examId,   studentId])
+
+  @@index([studentId])
+  @@index([examId])
+  @@index([status])
+
+  @@map("results")
+}

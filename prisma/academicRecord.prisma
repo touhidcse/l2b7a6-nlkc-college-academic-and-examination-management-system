@@ -1,0 +1,48 @@
+// ==================================================
+// STUDENT ACADEMIC RECORD
+// ==================================================
+
+model StudentAcademicRecord {
+  id Int @id @default(autoincrement())
+
+  studentId Int
+
+  academicSessionId Int
+
+  academicLevelId Int
+
+  academicGroupId Int?
+
+  sectionId Int
+
+  rollNumber Int?
+
+  registrationNumber String?
+
+  status AcademicStatus @default(ACTIVE)
+
+  student Student @relation( fields: [studentId], references: [id])
+
+  academicSession AcademicSession @relation(  fields: [academicSessionId], references: [id])
+
+  academicLevel AcademicLevel @relation( fields: [academicLevelId],  references: [id])
+
+  academicGroup AcademicGroup? @relation(  fields: [academicGroupId], references: [id])
+
+  section Section @relation( fields: [sectionId],  references: [id])
+
+  subjects StudentSubject[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@unique([ studentId,  academicSessionId,  academicLevelId ])
+
+  @@index([studentId])
+  @@index([academicSessionId])
+  @@index([academicLevelId])
+  @@index([sectionId])
+  @@index([status])
+
+  @@map("student_academic_records")
+}
