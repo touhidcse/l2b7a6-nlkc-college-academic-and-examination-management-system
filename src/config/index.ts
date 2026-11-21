@@ -18,21 +18,18 @@ export default {
 
 	google_client_id: process.env.GOOGLE_CLIENT_ID!,
 
-	super_admin_name: process.env.SUPER_ADMIN_NAME!,
-	super_admin_email: process.env.SUPER_ADMIN_EMAIL!,
-	super_admin_password: process.env.SUPER_ADMIN_PASSWORD!,
+	admin_name: process.env.ADMIN_NAME!,
+	admin_email: process.env.ADMIN_EMAIL!,
+	admin_password: process.env.ADMIN_PASSWORD!,
 
-	tester_admin_name: process.env.TESTER_ADMIN_NAME!,
-	tester_admin_email: process.env.TESTER_ADMIN_EMAIL!,
-	tester_admin_password: process.env.TESTER_ADMIN_PASSWORD!,
 
-	tester_doctor_name: process.env.TESTER_DOCTOR_NAME!,
-	tester_doctor_email: process.env.TESTER_DOCTOR_EMAIL!,
-	tester_doctor_password: process.env.TESTER_DOCTOR_PASSWORD!,
+	tester_teacher_name: process.env.TESTER_TEACHER_NAME!,
+	tester_teacher_email: process.env.TESTER_TEACHER_EMAIL!,
+	tester_teacher_password: process.env.TESTER_TEACHER_PASSWORD!,
 
-	tester_patient_name: process.env.tester_patient_name!,
-	tester_patient_email: process.env.tester_patient_email!,
-	tester_patient_password: process.env.tester_patient_password!,
+	tester_student_name: process.env.TESTER_STUDENT_NAME!,
+	tester_student_email: process.env.TESTER_STUDENT_EMAIL!,
+	tester_student_password: process.env.TESTER_STUDENT_PASSWORD!,
 
 	redis_user: process.env.REDIS_USER!,
 	redis_password: process.env.REDIS_PASSWORD!,
