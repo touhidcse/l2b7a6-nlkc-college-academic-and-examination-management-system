@@ -3,14 +3,14 @@
 // ==================================================
 
 model Payment {
-  id Int @id @default(autoincrement())
+  id       String    @id @default(uuid())
 
-  examFeeId Int
+  examFeeId String
 
-  studentId Int
+  studentId String
 
-  // BDT integer amount
-  amount Int
+  // BDT float amount
+  amount Float
 
   gateway PaymentGateway
 

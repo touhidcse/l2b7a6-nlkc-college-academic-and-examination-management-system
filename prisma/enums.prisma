@@ -8,6 +8,23 @@ enum Role {
   STUDENT
 }
 
+enum UserStatus {
+  ACTIVE
+  BLOCKED
+  DELETED
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum AuthProvider{
+  GOOGLE
+  CREDENTIAL
+}
+
 enum ProgramType {
   HIGHER_SECONDARY
   DEGREE

@@ -3,13 +3,13 @@
 // ==================================================
 
 model AcademicLevel {
-  id Int @id @default(autoincrement())
+  id       String    @id @default(uuid())
 
-  programId Int
+  programId String
 
   name String
 
-  yearNumber Int
+  yearNumber String
 
   program AcademicProgram @relation( fields: [programId],  references: [id])
 

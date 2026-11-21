@@ -3,15 +3,15 @@
 // ==================================================
 
 model TeacherAssignment {
-  id Int @id @default(autoincrement())
+  id       String    @id @default(uuid())
 
-  teacherId Int
+  teacherId String
 
-  sectionId Int
+  sectionId String
 
-  curriculumSubjectId Int
+  curriculumSubjectId String
 
-  academicSessionId Int
+  academicSessionId String
 
   isActive Boolean @default(true)
 

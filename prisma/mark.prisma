@@ -3,11 +3,11 @@
 // ==================================================
 
 model Mark {
-  id Int @id @default(autoincrement())
+  id       String    @id @default(uuid())
 
-  examSubjectId Int
+  examSubjectId String
 
-  studentId Int
+  studentId String
 
   mcqMark Int?
 
@@ -23,7 +23,7 @@ model Mark {
 
   gradePoint Float?
 
-  enteredBy Int?
+  enteredBy String?
 
   examSubject ExamSubject @relation( fields: [examSubjectId], references: [id])
 

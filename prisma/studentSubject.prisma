@@ -10,13 +10,13 @@
 // ==================================================
 
 model StudentSubject {
-  id Int @id @default(autoincrement())
+  id       String    @id @default(uuid())
 
-  studentId Int
+  studentId String
 
-  studentAcademicRecordId Int
+  studentAcademicRecordId String
 
-  curriculumSubjectId Int
+  curriculumSubjectId String
 
   subject SubjectName
 

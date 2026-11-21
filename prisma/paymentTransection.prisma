@@ -3,16 +3,16 @@
 // ==================================================
 
 model PaymentTransaction {
-  id Int @id @default(autoincrement())
+  id       String    @id @default(uuid())
 
-  paymentId Int
+  paymentId String
 
   gateway PaymentGateway
 
   gatewayTransactionId String
 
-  // BDT integer amount
-  amount Int
+  // BDT Float amount
+  amount Float
 
   status PaymentStatus
 

@@ -26,11 +26,11 @@
 // ==================================================
 
 model CurriculumSubject {
-  id Int @id @default(autoincrement())
+  id       String    @id @default(uuid())
 
-  academicLevelId Int
+  academicLevelId String
 
-  academicGroupId Int?
+  academicGroupId String?
 
   subject SubjectName
 

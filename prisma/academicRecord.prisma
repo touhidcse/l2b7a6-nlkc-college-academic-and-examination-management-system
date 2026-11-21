@@ -3,21 +3,21 @@
 // ==================================================
 
 model StudentAcademicRecord {
-  id Int @id @default(autoincrement())
+  id       String    @id @default(uuid())
 
-  studentId Int
+  studentId String
 
-  academicSessionId Int
+  academicSessionId String
 
-  academicLevelId Int
+  academicLevelId String
 
-  academicGroupId Int?
+  academicGroupId String?
 
-  sectionId Int
+  sectionId String 
 
-  rollNumber Int?
+  rollNumber Int? @unique
 
-  registrationNumber String?
+  registrationNumber String? @unique
 
   status AcademicStatus @default(ACTIVE)
 

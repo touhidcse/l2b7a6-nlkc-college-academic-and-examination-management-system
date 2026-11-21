@@ -3,15 +3,15 @@
 // ==================================================
 
 model Section {
-  id Int @id @default(autoincrement())
+  id       String    @id @default(uuid())
 
-  academicLevelId Int
+  academicLevelId String
 
-  academicGroupId Int?
+  academicGroupId String?
 
   name String
 
-  capacity Int?
+  capacity String?
 
   isActive Boolean @default(true)
 

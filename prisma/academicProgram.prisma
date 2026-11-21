@@ -3,7 +3,7 @@
 // ==================================================
 
 model AcademicProgram {
-  id Int @id @default(autoincrement())
+  id       String    @id @default(uuid())
 
   name String
   code String @unique

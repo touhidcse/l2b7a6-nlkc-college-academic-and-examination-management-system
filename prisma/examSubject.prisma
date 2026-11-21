@@ -3,11 +3,11 @@
 // ==================================================
 
 model ExamSubject {
-  id Int @id @default(autoincrement())
+  id       String    @id @default(uuid())
 
-  examId Int
+  examId String
 
-  curriculumSubjectId Int
+  curriculumSubjectId String
 
   subject SubjectName
 
